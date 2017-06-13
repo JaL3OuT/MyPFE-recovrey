@@ -82,7 +82,6 @@
             android:id="@+id/aLanglot"
             android:layout_width="64dp"
             android:layout_height="41dp"
-
             android:hint="Longitude"
             android:inputType="numberDecimal"
             android:textSize="12sp" />

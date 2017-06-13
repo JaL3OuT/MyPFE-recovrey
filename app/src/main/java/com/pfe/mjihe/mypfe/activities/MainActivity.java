@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pfe.mjihe.mypfe.R;
+import com.pfe.mjihe.mypfe.fragments.Traveaux_client_Fragment;
 import com.pfe.mjihe.mypfe.fragments.AccueilFragment;
 import com.pfe.mjihe.mypfe.fragments.FacturesFragment;
 import com.pfe.mjihe.mypfe.fragments.RepportFragment;
@@ -153,6 +154,10 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.factures) {
             fm.beginTransaction().replace(R.id.container, new FacturesFragment()).commit();
+        }
+        if (id == R.id.nav_Traveau)
+        {
+            fm.beginTransaction().replace(R.id.container , new Traveaux_client_Fragment()).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

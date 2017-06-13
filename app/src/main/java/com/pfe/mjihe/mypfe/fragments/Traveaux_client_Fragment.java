@@ -1,12 +1,13 @@
-package com.pfe.mjihe.mypfe.admin.fragment;
+package com.pfe.mjihe.mypfe.fragments;
+
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pfe.mjihe.mypfe.R;
-import com.pfe.mjihe.mypfe.adapters.RapportAdapter;
-import com.pfe.mjihe.mypfe.admin.RapportView;
-import com.pfe.mjihe.mypfe.models.Rapport;
+import com.pfe.mjihe.mypfe.adapters.TraveauxAdapter;
+import com.pfe.mjihe.mypfe.admin.TraveauView;
+import com.pfe.mjihe.mypfe.models.Traveaux;
 import com.pfe.mjihe.mypfe.models.User;
 import com.pfe.mjihe.mypfe.utils.DividerItemDecoration;
 import com.pfe.mjihe.mypfe.utils.ItemClickSupport;
@@ -30,102 +31,96 @@ import com.pfe.mjihe.mypfe.utils.ItemClickSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class rapport extends android.support.v4.app.Fragment {
-
-    private String gov, local, comun;
+public class Traveaux_client_Fragment extends android.app.Fragment {
+    private View rootview;
+    private String gov, comun;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
-    private View rootview;
-    private RecyclerView recycler;
-    private RapportAdapter mAdapter;
-    private List<Rapport> mRapportList = new ArrayList<>();
+    private RecyclerView recyclertraveaux;
+    private TraveauxAdapter mTraveauxAdapter;
+    private List<Traveaux> mTraveauListe = new ArrayList<>();
 
-    public rapport() {
+    public Traveaux_client_Fragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.content_raport, container, false);
-        initView();
+        rootview=inflater.inflate(R.layout.fragment_traveaux_client_, container, false);
         initFirebase();
+        initview();
         getadressAdmin();
-
         return rootview;
     }
+    private void initview() {
+        recyclertraveaux = (RecyclerView) rootview.findViewById(R.id.recyclerTraveauClient);
+        RecyclerView.LayoutManager mLayoutmanager = new LinearLayoutManager(getActivity());
+        recyclertraveaux.setLayoutManager(mLayoutmanager);
+        recyclertraveaux.setItemAnimator(new DefaultItemAnimator());
+        recyclertraveaux.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        mTraveauxAdapter = new TraveauxAdapter(mTraveauListe);
+        recyclertraveaux.setAdapter(mTraveauxAdapter);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        ItemClickSupport.addTo(recyclertraveaux).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getActivity(), mTraveauListe.get(position).getIdtraveau().toString(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), TraveauView.class);
+                i.putExtra("id traveau", mTraveauListe.get(position).getIdtraveau().toString());
+                startActivity(i);
+            }
+        });
     }
 
+    public void getadressAdmin() {
+        initFirebase();
+        mRef.child("user").child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                gov = user.getGouvernorat();
+                comun = user.getComunn();
+                traveuData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
     private void initFirebase() {
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference();
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
     }
-
-    private void initView() {
-        recycler = (RecyclerView) rootview.findViewById(R.id.recycler_viewRapport);
-        mAdapter = new RapportAdapter(mRapportList);
-        RecyclerView.LayoutManager mLayoutmanager = new LinearLayoutManager(getActivity());
-        recycler.setLayoutManager(mLayoutmanager);
-        recycler.setItemAnimator(new DefaultItemAnimator());
-        recycler.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        recycler.setAdapter(mAdapter);
-        ItemClickSupport.addTo(recycler).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                Toast.makeText(getActivity(), mRapportList.get(position).getDate(), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity() , RapportView.class);
-                i.putExtra("rapport_index",mRapportList.get(position).getRtimstemp());
-                startActivity(i);
-            }
-        });
-    }
-    public void getadressAdmin() {
-        mRef.child("user").child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                local = user.getLocalite();
-                gov = user.getGouvernorat();
-                comun = user.getComunn();
-                rapportData();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
-
-    private void rapportData() {
+    private void traveuData() {
         initFirebase();
-        mRapportList.removeAll(mRapportList);
-        mRef.child("Rapport").child(gov).child(comun).child(local).addListenerForSingleValueEvent(new ValueEventListener() {
+        mTraveauListe.removeAll(mTraveauListe);
+        mRef.child("Region").child(gov).child(comun).child("traveaux").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot rapportSnapshot : dataSnapshot.getChildren()) {
-                    Rapport mRapport = rapportSnapshot.getValue(Rapport.class);
-                    mRapportList.add(mRapport);
+                Log.e("TAG", "children count " + dataSnapshot.getChildrenCount());
+                for (DataSnapshot traveauSnapshot : dataSnapshot.getChildren()) {
+                    Traveaux mTraveaux = traveauSnapshot.getValue(Traveaux.class);
+                    Log.e("TAG", "id TRaveau : " + mTraveaux.getIdtraveau());
+                    mTraveauListe.add(mTraveaux);
                 }
-                mAdapter.notifyDataSetChanged();
+                mTraveauxAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
+
 }

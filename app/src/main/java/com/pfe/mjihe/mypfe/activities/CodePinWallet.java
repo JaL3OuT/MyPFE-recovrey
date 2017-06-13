@@ -60,7 +60,6 @@ public class CodePinWallet extends Activity {
     };
     private String pin;
     private int code;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +68,8 @@ public class CodePinWallet extends Activity {
         Bundle bn = intent.getExtras();
         code = bn.getInt("codeIntent");
         getWalletPin();
-
         initView();
     }
-
     private void initView() {
         userEntered = "";
         leng = userEntered.length();

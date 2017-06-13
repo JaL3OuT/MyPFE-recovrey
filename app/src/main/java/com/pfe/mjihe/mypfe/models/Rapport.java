@@ -12,17 +12,17 @@ public class Rapport implements Serializable {
     private String rapport;
     private String date;
     private double lati, langi;
-
+    private long rtimstemp;
     public Rapport() {
     }
-
-    public Rapport(String uid, String url, String rapportcontent, String date, double lati, double langi) {
+    public Rapport(String uid, String url, String rapportcontent, String date, double lati, double langi, long rtimstemp) {
         this.ruid = uid;
         this.url = url;
         this.rapport = rapportcontent;
         this.date = date;
         this.lati = lati;
         this.langi = langi;
+        this.rtimstemp = rtimstemp;
     }
 
     public String getRapport() {
@@ -71,5 +71,13 @@ public class Rapport implements Serializable {
 
     public void setLangi(double langi) {
         this.langi = langi;
+    }
+
+    public long getRtimstemp() {
+        return rtimstemp;
+    }
+
+    public void setRtimstemp(long rtimstemp) {
+        this.rtimstemp = rtimstemp;
     }
 }

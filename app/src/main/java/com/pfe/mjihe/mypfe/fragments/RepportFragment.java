@@ -63,7 +63,7 @@ public class RepportFragment extends Fragment implements View.OnClickListener, G
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int RESULT_LOAD_IMG = 1;
     double lat, lang;
-    long datestamp;
+    long datestamp ,rtem;
     private SharedPreferences prefr;
     private SharedPreferences.Editor edit2, edit3, edit1;
     private FirebaseDatabase mDatabase;
@@ -144,15 +144,14 @@ public class RepportFragment extends Fragment implements View.OnClickListener, G
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Log.d("HelloUrl", "onSuccess: " + taskSnapshot.getDownloadUrl());
-                Rapport rp = new Rapport(mUser.getUid().toString(), taskSnapshot.getDownloadUrl().toString(), rapporttext.getText().toString(), date, lat, lang);
+                rtem = System.currentTimeMillis() / 1000;
+                Rapport rp = new Rapport(mUser.getUid().toString(), taskSnapshot.getDownloadUrl().toString(), rapporttext.getText().toString(), date, lat, lang, rtem);
                 //String key = mRef.child("Rapport").child(mUser.getUid()).getKey();
                 mRef.child("Rapport").child(gov).child(comun).child(local).child(String.valueOf(System.currentTimeMillis() / 1000)).setValue(rp).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         mDialog.dismiss();
-
-
-                        Toast.makeText(getActivity(), "Rapport added !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Rapport added !"+date.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

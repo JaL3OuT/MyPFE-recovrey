@@ -77,7 +77,8 @@
             android:exported="true" />
 
         <activity android:name=".activities.FacturesView" />
-        <activity android:name=".activities.Recharger_Wallet"></activity>
+        <activity android:name=".activities.Recharger_Wallet" />
+        <activity android:name=".admin.RapportView"></activity>
     </application>
 
 </manifest>

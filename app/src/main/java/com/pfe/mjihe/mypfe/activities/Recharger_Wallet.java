@@ -54,7 +54,7 @@ public class Recharger_Wallet extends Activity implements View.OnClickListener {
                     solde.setText(sommeWallet.toString());
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "HelloWallet", Toast.LENGTH_LONG).show();
+
                 }
             }
 
@@ -82,6 +82,7 @@ public class Recharger_Wallet extends Activity implements View.OnClickListener {
                 public void onComplete(@NonNull Task<Void> task) {
                     Toast.makeText(Recharger_Wallet.this, "Recharger avec succé avec succé ", Toast.LENGTH_SHORT).show();
                     initview();
+                    aRecharger.setText("");
                 }
             });
         }
