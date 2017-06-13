@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/accueil"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Accueil" />
+
+        <item
+            android:id="@+id/factures"
+            android:icon="?android:attr/actionModeCopyDrawable"
+            android:title="factures" />
+        <item
+            android:id="@+id/wallet"
+            android:icon="@drawable/ic_wallet"
+            android:title="Wallet" />
+
+
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Traveaux" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="FeedBack" />
+            <item
+                android:id="@+id/rapportadd"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Reports" />
+        </menu>
+    </item>
+
+    <item android:title="Parametre">
+        <menu>
+            <item
+                android:icon="@drawable/ic_menu_share"
+                android:title="Parametre" />
+            <item
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Langue" />
+        </menu>
+    </item>
+
+
+
+</menu>

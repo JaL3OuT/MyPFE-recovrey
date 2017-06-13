@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pfe.mjihe.mypfe.fragments.Wallet_SoldeFragment">
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="227dp"
+            android:layout_height="97dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="74dp"
+            android:text="@string/hello_blank_fragment"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.188" />
+
+        <Button
+            android:id="@+id/recharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="132dp"
+            android:layout_marginStart="28dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Recharger Solde"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/supprimer"
+            android:layout_width="148dp"
+            android:layout_height="49dp"
+            android:layout_marginBottom="132dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Effacer wallet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="212dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="298dp"
+            android:layout_height="38dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="monospace"
+            android:text="LE SOLDE ACTUELL : "
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?android:attr/textColorPrimaryNoDisable"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:typeface="normal"
+            tools:layout_editor_absoluteX="45dp"
+            tools:layout_editor_absoluteY="35dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="104dp"
+            android:layout_height="98dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Dinars"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="264dp"
+            tools:layout_editor_absoluteY="149dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="139dp"
+            app:layout_constraintBottom_toTopOf="@+id/supprimer" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

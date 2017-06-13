@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Smart Municipality</string>
+    <string-array name="ajoutlot">
+        <item>non payer</item>
+        <item> payer </item>
+    </string-array>
+    <string-array name="gov">
+        <item>Ariana</item>
+        <item>Béja</item>
+        <item>Ben Arous	</item>
+        <item>Bizerte</item>
+        <item>Gabès</item>
+        <item>Gafsa</item>
+        <item>Jendouba</item>
+        <item>Kairouan</item>
+        <item>Kasserine</item>
+        <item>Kébili</item>
+        <item>Le Kef</item>
+        <item>Mahdia</item>
+        <item>La Manouba</item>
+        <item>Médenine</item>
+        <item>Monastir</item>
+        <item>Nabeul</item>
+        <item>Sfax</item>
+        <item>Sidi Bouzid</item>
+        <item>Siliana</item>
+        <item>Sousse</item>
+        <item>Tataouine</item>
+        <item>Tozeur</item>
+        <item>Tunis</item>
+        <item>Zaghouan</item>
+    </string-array>
+    <string-array name="communAriana">
+        <item>Soukra</item>
+        <item>Ariana</item>
+        <item>Raoued</item>
+        <item>Mnihla</item>
+        <item>Ettadhamen</item>
+        <item>Kalaat El-Andalous</item>
+        <item>Sidi Thabet</item>
+    </string-array>
+    <string-array name="communTunis">
+        <item> Tunis</item>
+        <item> Sidi Hassine</item>
+        <item> La Marsa</item>
+        <item> Le Kram</item>
+        <item> Bardo</item>
+        <item> La Goulette</item>
+        <item> Carthage</item>
+        <item>  Sidi Bou Said</item>
+    </string-array>
+    <string-array name="localiteSokra">
+        <item>Soukra</item>
+        <item>Dar Fadhal</item>
+        <item>El-Bessatine</item>
+        <item>Chotrana</item>
+        <item>Borj El-Ouzir</item>
+        <item>Ennasim</item>
+        <item>Ettaamir</item>
+    </string-array>
+    <string-array name="localiteAriana">
+        <item>La Nouvelle Ariana</item>
+        <item> Ariana Supérieur</item>
+        <item>Ariana Ville</item>
+        <item>Menzah 5</item>
+        <item>Menzah 6</item>
+        <item>Etaamir</item>
+        <item>El-Yasmina</item>
+        <item>Ennasr-1</item>
+        <item> Ennasr-2</item>
+    </string-array>
+    <string name="title_activity_main">Acceuil</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_admin">MainAdmin</string>
+    <string name="tab_text_1">LOt</string>
+    <string name="tab_text_2">traveaux</string>
+    <string name="tab_text_3">rapport</string>
+    <string name="title_activity_map_lot">Map Lot</string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+    <string name="title_activity_map_traveaux">Map</string>
+</resources>

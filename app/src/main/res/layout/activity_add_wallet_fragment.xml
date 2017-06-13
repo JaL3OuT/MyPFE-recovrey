@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.pfe.mjihe.mypfe.activities.AddWalletFragment">
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/cin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:hint="Numero CIN"
+        android:inputType="number"
+        android:maxLength="8" />
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/edinar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:hint="Dernier 4 chiffres de la carte E-Dinar"
+        android:inputType="number"
+        android:maxLength="4" />
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:hint="code pin 4 chiffre"
+        android:inputType="numberDecimal"
+        android:maxLength="4" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/pinWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:hint="Créer code pin Wallet"
+        android:inputType="number"
+        android:maxLength="4" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Wallet" />
+
+
+</LinearLayout>
