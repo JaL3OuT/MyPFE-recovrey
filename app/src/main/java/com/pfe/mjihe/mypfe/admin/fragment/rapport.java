@@ -86,7 +86,7 @@ public class rapport extends android.support.v4.app.Fragment {
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 Toast.makeText(getActivity(), mRapportList.get(position).getDate(), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getActivity() , RapportView.class);
-                i.putExtra("rapport_index",mRapportList.get(position).getRtimstemp());
+                i.putExtra("rapport_index",String.valueOf(mRapportList.get(position).getRtimstemp()));
                 startActivity(i);
             }
         });

@@ -10,11 +10,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,6 +67,7 @@ public class MapTabedCitoyen extends Fragment {
     private long datestamp;
     private String date;
     private ProgressDialog mDialog;
+    private EditText searchInput;
 
 
     public MapTabedCitoyen() {
@@ -84,8 +88,49 @@ public class MapTabedCitoyen extends Fragment {
         return rootview;
     }
 
+    void filter(String text){
+        List<Lot> temp = new ArrayList();
+        if(text.isEmpty()){
+            temp = mLotList;
+        }else{
+            for(Lot d: mLotList){
+                if(d.getNumlot().contains(text)){
+                    temp.add(d);
+                }
+            }
+        }
+
+        mlotAdapter.updateList(temp);
+    }
+
+
     private void initView() {
         aCarte = (Button) rootview.findViewById(R.id.mapLot);
+        searchInput = (EditText) rootview.findViewById(R.id.search);
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // filter your list from your input
+                filter(s.toString());
+                //you can use runnable postDelayed like 500 ms to delay search text
+            }
+        });
+
+
         aCarte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
