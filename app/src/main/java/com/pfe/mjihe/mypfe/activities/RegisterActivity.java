@@ -27,21 +27,16 @@ import com.pfe.mjihe.mypfe.models.User;
 import com.pfe.mjihe.mypfe.models.Wallet;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Button bRegister;
-
     private EditText nom;
     private EditText prenom, cin;
     private EditText email;
     private EditText password;
     private EditText repassword;
     private Spinner gov, comm, loc;
-
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
-
     private ProgressDialog  mDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +45,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initInstance();
         initListener();
     }
-
     private void initListener() {
         bRegister.setOnClickListener(this);
     }
-
     private void initInstance() {
         mAuth= FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();
@@ -62,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mDialog.setTitle("Chargment");
         mDialog.setMessage("Attendez SVP !!");
     }
-
     private void initView() {
         nom = (EditText) findViewById(R.id.nom);
         prenom = (EditText) findViewById(R.id.prenom);
@@ -138,7 +130,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         return empty;
     }
-
     private void createUser(final String email, final String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -155,7 +146,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
     }
-
     private void addUser(String uid) {
         String tUser = "user";
         User u = new User();
@@ -177,7 +167,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
     }
-
     private void choixSpinner() {
         String choi = gov.getSelectedItem().toString();
         switch (choi) {

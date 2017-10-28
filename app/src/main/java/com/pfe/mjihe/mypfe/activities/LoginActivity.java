@@ -26,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pfe.mjihe.mypfe.R;
 import com.pfe.mjihe.mypfe.admin.MainAdmin;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     String etat;
     private FirebaseAuth mAuth;
@@ -35,7 +34,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tEmail;
     private TextView tPassword;
     private ProgressDialog mDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +53,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bLogin = (Button) findViewById(R.id.login);
         bRegister = (Button) findViewById(R.id.register);
     }
-
     private void initInstance() {
         mAuth = FirebaseAuth.getInstance();
-
         if (mAuth.getCurrentUser() != null) {
             getUserDetail();
         }
-
         mDialog = new ProgressDialog(this);
         mDialog.setTitle("Chargment");
         mDialog.setMessage("Attendez SVP !!");

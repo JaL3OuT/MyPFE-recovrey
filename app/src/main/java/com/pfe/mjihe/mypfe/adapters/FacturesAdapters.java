@@ -41,7 +41,7 @@ public class FacturesAdapters extends RecyclerView.Adapter<FacturesAdapters.MyVi
         holder.id.setText(factures.getnLot());
         holder.dat.setText(factures.getDate());
         holder.somme.setText(String.valueOf(factures.getSomme()));
-        if (factures.isPaymentF() == true) {
+        if (factures.isPaymentF()) {
             holder.payF.setBackgroundColor(Color.GREEN);
         } else {
             holder.payF.setBackgroundColor(Color.RED);

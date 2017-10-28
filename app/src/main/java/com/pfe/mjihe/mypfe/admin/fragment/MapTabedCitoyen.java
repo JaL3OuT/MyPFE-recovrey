@@ -59,6 +59,7 @@ public class MapTabedCitoyen extends Fragment {
     private FloatingActionButton nottifier;
     private RecyclerView recyclerlot;
     private LotAdapter mlotAdapter;
+
     private Lot mlot;
     private User nUser;
     private List<Lot> mLotList = new ArrayList<>();
@@ -161,6 +162,7 @@ public class MapTabedCitoyen extends Fragment {
         recyclerlot.setItemAnimator(new DefaultItemAnimator());
         recyclerlot.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         recyclerlot.setAdapter(mlotAdapter);
+
         ItemClickSupport.addTo(recyclerlot).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {

@@ -16,30 +16,23 @@ import java.util.List;
 /**
  * Created by Mjihe on 02/06/2017.
  */
-
 public class LotAdapter extends RecyclerView.Adapter<LotAdapter.MyViewHolder> {
     private List<Lot> loList;
-
     public LotAdapter(List<Lot> loList) {
         this.loList = loList;
     }
-
     public LotAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_lot, parent, false);
         return new LotAdapter.MyViewHolder(itemView);
     }
-
     public int getItemCount() {
         return loList.size();
     }
-
-
     public void updateList(List<Lot> list){
         loList = list;
         notifyDataSetChanged();
     }
-
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Lot lot = loList.get(position);
         holder.numcin.setText(lot.getCin().toString());
@@ -51,11 +44,9 @@ public class LotAdapter extends RecyclerView.Adapter<LotAdapter.MyViewHolder> {
             holder.etatpay.setBackgroundColor(Color.RED);
         }
     }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView numlot, numcin, tax;
         private LinearLayout etatpay;
-
         public MyViewHolder(View View) {
             super(View);
             etatpay = (LinearLayout) View.findViewById(R.id.etatpay);

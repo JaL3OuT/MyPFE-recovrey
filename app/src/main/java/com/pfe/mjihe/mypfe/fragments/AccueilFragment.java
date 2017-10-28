@@ -64,7 +64,7 @@ public class AccueilFragment extends Fragment implements OnMapReadyCallback, Goo
     private String gov, comu, snom, sinfo, slogo;
     private Double mlat;
     private Double mlang;
-    private LatLng local;//= new LatLng(0,0);
+    private LatLng local;
     private Municipalite mmunici;
 
     public AccueilFragment() {
@@ -104,7 +104,6 @@ public class AccueilFragment extends Fragment implements OnMapReadyCallback, Goo
         super.onLowMemory();
         mapview.onLowMemory();
     }
-
     private void initview() {
         nomm = (TextView) rootview.findViewById(R.id.nomM);
         infom = (TextView) rootview.findViewById(R.id.infomun);
